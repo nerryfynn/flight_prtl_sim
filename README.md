@@ -6,9 +6,9 @@ Learning how to Create a World leading airline portal.
 Use these details to check the seeded reservation:
 
 - PNR: ANA27A
-- Last name: KUMIKOYA
+- Last name: SATO
 - Ticket number: ANA-TKT-2026-27
-- Email: addresskumikoyakaren@gmail.com
+- Email: hanako.sato@example.com
 
 Flight details:
 - Airline: All Nippon Airways (ANA)

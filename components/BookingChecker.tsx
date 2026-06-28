@@ -134,7 +134,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: KUMIKOYA"
+              placeholder="例: SATO"
               value={lastName}
               onChange={e => setLastName(e.target.value.toUpperCase())}
               className="input-ana text-sm"

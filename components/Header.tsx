@@ -12,9 +12,6 @@ export default function Header() {
               <div className="text-xs text-gray-500 hidden sm:inline">全日本空輸</div>
             </div>
           </a>
-          <span className="hidden md:inline-flex items-center gap-1 text-xs bg-ana-light-blue text-ana-blue px-3 py-1 rounded-full font-medium">
-            <i className="fas fa-shield-alt"></i> 公式サイト
-          </span>
         </div>
         <div className="flex items-center gap-2 sm:gap-4 text-sm flex-wrap">
           <span className="hidden md:inline text-gray-600">

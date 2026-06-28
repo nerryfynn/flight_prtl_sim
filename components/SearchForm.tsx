@@ -114,7 +114,7 @@ export default function SearchForm({ onSearch, isLoading }: SearchFormProps) {
             onChange={handleInputChange}
             className="input-ana"
           >
-            <option value="">選択してください</option>
+            <option value="" disabled hidden>出発地を選択してください</option>
             {airports.map(airport => (
               <option key={airport.id} value={airport.code}>
                 {airport.code} - {airport.city} ({airport.name})
@@ -133,7 +133,7 @@ export default function SearchForm({ onSearch, isLoading }: SearchFormProps) {
             onChange={handleInputChange}
             className="input-ana"
           >
-            <option value="">選択してください</option>
+            <option value="" disabled hidden>到着地を選択してください</option>
             {airports.map(airport => (
               <option key={airport.id} value={airport.code}>
                 {airport.code} - {airport.city} ({airport.name})

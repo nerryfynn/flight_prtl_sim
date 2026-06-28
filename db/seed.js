@@ -270,7 +270,7 @@ async function seed() {
         {
           pnr: 'ANA27A',
           flightId: 1,
-          passengerId: createdPassengers[2]?.id || 3,
+          passengerId: createdPassengers[0]?.id || 1,
           seatNumber: '3A',
           cabinClass: 'BUSINESS',
           price: 45000000,
