@@ -268,7 +268,7 @@ async function seed() {
     if (createdPassengers.length > 0) {
       const bookingData = [
         {
-          pnr: 'KUMI27A',
+          pnr: 'ANA27A',
           flightId: 1,
           passengerId: createdPassengers[2]?.id || 3,
           seatNumber: '12A',

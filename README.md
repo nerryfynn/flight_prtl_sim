@@ -5,9 +5,9 @@ Learning how to Create a World leading airline portal.
 
 Use these details to check the seeded reservation:
 
-- PNR: KUMI27A
+- PNR: ANA27A
 - Last name: KUMIKOYA
-- Ticket number: TKT-KUMI-2026-27
+- Ticket number: ANA-TKT-2026-27
 - Email: addresskumikoyakaren@gmail.com
 
 Flight details:
