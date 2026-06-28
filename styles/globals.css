@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a2e;
+}
+
+.btn-ana {
+  @apply bg-ana-blue text-white px-10 py-3 rounded font-bold hover:bg-ana-blue-dark transition-all hover:shadow-lg hover:-translate-y-0.5;
+}
+
+.btn-ana-outline {
+  @apply bg-transparent border-2 border-ana-blue text-ana-blue px-8 py-2 rounded font-bold hover:bg-ana-blue hover:text-white transition-all;
+}
+
+.input-ana {
+  @apply border border-gray-300 rounded px-3.5 py-2.5 w-full bg-white text-gray-900 focus:border-ana-blue focus:outline-none focus:ring-2 focus:ring-ana-blue focus:ring-opacity-20 transition-all;
+}
+
+.tab-active {
+  @apply border-b-4 border-ana-blue text-ana-blue font-bold;
+}
+
+.tab-inactive {
+  @apply border-b-4 border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900;
+}
+
+.ana-card {
+  @apply bg-white rounded-lg shadow-sm hover:shadow-md p-6 border border-gray-100 transition-shadow;
+}
+
+.flight-status-badge {
+  @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.status-scheduled {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-delayed {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-cancelled {
+  @apply bg-red-100 text-red-800;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  .ana-card {
+    @apply bg-gray-800 border-gray-700;
+  }
+
+  .input-ana {
+    @apply bg-gray-700 text-gray-100 border-gray-600;
+  }
+}
