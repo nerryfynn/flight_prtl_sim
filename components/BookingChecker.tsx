@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -242,22 +243,33 @@ export default function BookingChecker() {
 
             <div className="bg-white p-4 rounded border border-green-200 md:col-span-2">
               <h4 className="font-semibold text-ana-blue mb-3">パスポート情報</h4>
-              <div className="grid md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <span className="text-gray-600">パスポート番号:</span>
-                  <span className="font-mono block">{bookingInfo.passenger.passportNumber}</span>
+              <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-4 text-sm">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <span className="text-gray-600">パスポート番号:</span>
+                    <span className="font-mono block">{bookingInfo.passenger.passportNumber}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">有効期限:</span>
+                    <span className="font-semibold block">{formatDate(bookingInfo.passenger.passportExpiry)}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">国籍:</span>
+                    <span className="font-semibold block">{bookingInfo.passenger.nationality}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">生年月日:</span>
+                    <span className="font-semibold block">{formatDate(bookingInfo.passenger.dateOfBirth)}</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-gray-600">有効期限:</span>
-                  <span className="font-semibold block">{formatDate(bookingInfo.passenger.passportExpiry)}</span>
-                </div>
-                <div>
-                  <span className="text-gray-600">国籍:</span>
-                  <span className="font-semibold block">{bookingInfo.passenger.nationality}</span>
-                </div>
-                <div>
-                  <span className="text-gray-600">生年月日:</span>
-                  <span className="font-semibold block">{formatDate(bookingInfo.passenger.dateOfBirth)}</span>
+                <div className="flex items-center justify-center rounded border border-gray-200 bg-gray-50 p-3">
+                  <Image
+                    src="/kumiko.jpeg"
+                    alt="Seeded passenger"
+                    width={160}
+                    height={160}
+                    className="rounded object-cover"
+                  />
                 </div>
               </div>
             </div>

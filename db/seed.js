@@ -241,19 +241,19 @@ async function seed() {
         postalCode: '100-0005',
       },
       {
-        firstName: 'John',
-        lastName: 'Smith',
-        email: 'john.smith@example.com',
-        phone: '+1-555-123-4567',
-        dateOfBirth: new Date('1988-11-10'),
-        gender: 'M',
-        nationality: 'USA',
-        passportNumber: 'US9876543',
-        passportExpiry: new Date('2029-05-20'),
-        address: '123 Main St, New York, NY 10001',
-        city: 'New York',
-        country: 'USA',
-        postalCode: '10001',
+        firstName: 'Karen',
+        lastName: 'Kumikoya',
+        email: 'addresskumikoyakaren@gmail.com',
+        phone: '+81-90-0000-0000',
+        dateOfBirth: new Date('2000-01-01'),
+        gender: 'F',
+        nationality: 'Japan',
+        passportNumber: 'JPN0000001',
+        passportExpiry: new Date('2035-12-31'),
+        address: 'N/A',
+        city: 'Tokyo',
+        country: 'Japan',
+        postalCode: '100-0000',
       },
     ]
 
@@ -268,13 +268,13 @@ async function seed() {
     if (createdPassengers.length > 0) {
       const bookingData = [
         {
-          pnr: 'ANA7K9P2X',
+          pnr: 'KUMI27A',
           flightId: 1,
-          passengerId: createdPassengers[0]?.id || 1,
+          passengerId: createdPassengers[2]?.id || 3,
           seatNumber: '12A',
           cabinClass: 'ECONOMY',
           price: 19860000,
-          status: 'CONFIRMED',
+          status: 'POSTPONED',
         },
       ]
 
