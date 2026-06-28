@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { flights, airlines, aircraft, airports } from '@/db/schema'
 import { eq, gte, lt, and } from 'drizzle-orm'
+import { alias } from 'drizzle-orm/pg-core'
 
 export async function GET(request: NextRequest) {
   try {
@@ -42,17 +43,15 @@ export async function GET(request: NextRequest) {
       )
     }
 
+    const depAirportAlias = alias(airports, 'depAirport')
+
     // Query flights
     const result = await db
       .select()
       .from(flights)
       .innerJoin(airlines, eq(flights.airlineId, airlines.id))
       .innerJoin(aircraft, eq(flights.aircraftId, aircraft.id))
-      .innerJoin(
-        airports,
-        eq(flights.departureAirportId, airports.id),
-        'depAirport'
-      )
+      .innerJoin(depAirportAlias, eq(flights.departureAirportId, depAirportAlias.id))
       .where(
         and(
           eq(flights.departureAirportId, depAirport[0].id),
