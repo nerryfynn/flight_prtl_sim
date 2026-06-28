@@ -136,8 +136,9 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Booking search error:', error)
 
-    const normalizedPnr = (pnr || '').trim().toUpperCase()
-    const normalizedLastName = (lastName || '').trim().toUpperCase()
+    const fallbackParams = request.nextUrl.searchParams
+    const normalizedPnr = (fallbackParams.get('pnr') || '').trim().toUpperCase()
+    const normalizedLastName = (fallbackParams.get('lastName') || '').trim().toUpperCase()
 
     if (normalizedPnr === 'ANA27A' && normalizedLastName === 'KUMIKOYA') {
       return NextResponse.json(fallbackBookingResponse)
