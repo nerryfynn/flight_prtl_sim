@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 interface Airport {
@@ -16,9 +16,21 @@ interface SearchFormProps {
   isLoading: boolean
 }
 
+const airports: Airport[] = [
+  { id: 'NRT', code: 'NRT', name: 'Narita International', city: 'Tokyo', country: 'Japan' },
+  { id: 'HND', code: 'HND', name: 'Haneda', city: 'Tokyo', country: 'Japan' },
+  { id: 'KIX', code: 'KIX', name: 'Kansai International', city: 'Osaka', country: 'Japan' },
+  { id: 'VNO', code: 'VNO', name: 'Vilnius', city: 'Vilnius', country: 'Lithuania' },
+  { id: 'LHR', code: 'LHR', name: 'London Heathrow', city: 'London', country: 'UK' },
+  { id: 'CDG', code: 'CDG', name: 'Paris Charles de Gaulle', city: 'Paris', country: 'France' },
+  { id: 'LAX', code: 'LAX', name: 'Los Angeles International', city: 'Los Angeles', country: 'USA' },
+  { id: 'JFK', code: 'JFK', name: 'John F. Kennedy', city: 'New York', country: 'USA' },
+  { id: 'SYD', code: 'SYD', name: 'Sydney', city: 'Sydney', country: 'Australia' },
+  { id: 'BKK', code: 'BKK', name: 'Suvarnabhumi', city: 'Bangkok', country: 'Thailand' },
+]
+
 export default function SearchForm({ onSearch, isLoading }: SearchFormProps) {
   const [roundtrip, setRoundtrip] = useState(true)
-  const [airports, setAirports] = useState<Airport[]>([])
   const [formData, setFormData] = useState({
     from: '',
     to: '',
@@ -27,23 +39,6 @@ export default function SearchForm({ onSearch, isLoading }: SearchFormProps) {
     cabin: 'ECONOMY',
     passengers: '1',
   })
-
-  useEffect(() => {
-    fetchAirports()
-  }, [])
-
-  const fetchAirports = async () => {
-    try {
-      const res = await fetch('/api/airports')
-      if (res.ok) {
-        const data = await res.json()
-        setAirports(data)
-      }
-    } catch (error) {
-      console.error('Failed to fetch airports:', error)
-      toast.error('空港情報の読み込みに失敗しました')
-    }
-  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target

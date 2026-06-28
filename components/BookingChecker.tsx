@@ -38,6 +38,41 @@ interface BookingInfo {
   price: number
 }
 
+const localBooking: BookingInfo = {
+  pnr: 'ANA27A',
+  status: 'CANCELLED',
+  cancellationReason: 'Operational disruption due to air traffic rerouting and crew scheduling',
+  flight: {
+    flightNumber: 'NH2047',
+    airline: 'All Nippon Airways',
+    route: ['Tokyo', 'Frankfurt', 'Vilnius'],
+    departure: {
+      airport: 'NRT',
+      city: 'Tokyo',
+      time: '2026-07-30T10:30:00+09:00',
+    },
+    arrival: {
+      airport: 'VNO',
+      city: 'Vilnius',
+      time: '2026-07-30T16:00:00+03:00',
+    },
+  },
+  passenger: {
+    firstName: 'Hanako',
+    lastName: 'Sato',
+    email: 'hanako.sato@example.com',
+    phone: '+81-80-1234-5678',
+    nationality: 'Japan',
+    passportNumber: 'JPN123456780',
+    dateOfBirth: '1992-04-12T00:00:00.000Z',
+    passportExpiry: '2034-04-15T00:00:00.000Z',
+    address: 'Minato-ku, Tokyo, Japan',
+  },
+  seat: '3A',
+  cabinClass: 'BUSINESS',
+  price: 45000000,
+}
+
 export default function BookingChecker() {
   const [pnr, setPnr] = useState('')
   const [lastName, setLastName] = useState('')
@@ -46,7 +81,7 @@ export default function BookingChecker() {
   const [bookingInfo, setBookingInfo] = useState<BookingInfo | null>(null)
   const [showDetails, setShowDetails] = useState(false)
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!pnr || !lastName || !flightNumber) {
@@ -55,32 +90,26 @@ export default function BookingChecker() {
     }
 
     setIsLoading(true)
-    try {
-      const params = new URLSearchParams({
-        pnr,
-        lastName,
-        ...(flightNumber && { flightNumber }),
-      })
 
-      const res = await fetch(`/api/bookings?${params}`)
+    const normalizedPnr = pnr.trim().toUpperCase()
+    const normalizedLastName = lastName.trim().toUpperCase()
+    const normalizedFlightNumber = flightNumber.trim().toUpperCase()
 
-      if (res.ok) {
-        const data = await res.json()
-        setBookingInfo(data)
-        setShowDetails(true)
-        toast.success('予約が確認できました')
-      } else {
-        const error = await res.json()
-        toast.error(error.error || '予約が見つかりません')
-        setShowDetails(false)
-      }
-    } catch (error) {
-      console.error('Booking search error:', error)
-      toast.error('予約照会に失敗しました')
+    if (
+      normalizedPnr === localBooking.pnr &&
+      normalizedLastName === localBooking.passenger.lastName.toUpperCase() &&
+      normalizedFlightNumber === localBooking.flight.flightNumber
+    ) {
+      setBookingInfo(localBooking)
+      setShowDetails(true)
+      toast.success('予約が確認できました')
+    } else {
+      setBookingInfo(null)
       setShowDetails(false)
-    } finally {
-      setIsLoading(false)
+      toast.error('予約が見つかりませんでした')
     }
+
+    setIsLoading(false)
   }
 
   const formatPrice = (price: number) => {
