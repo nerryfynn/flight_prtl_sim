@@ -1,15 +1,16 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 interface BookingInfo {
   pnr: string
   status: string
+  cancellationReason?: string
   flight: {
     flightNumber: string
     airline: string
+    route?: string[]
     departure: {
       airport: string
       city: string
@@ -48,8 +49,8 @@ export default function BookingChecker() {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!pnr || !lastName) {
-      toast.error('予約番号と姓を入力してください')
+    if (!pnr || !lastName || !flightNumber) {
+      toast.error('予約番号、姓、便名をすべて入力してください')
       return
     }
 
@@ -120,7 +121,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: ANA-XXXXX"
+              placeholder="例: ANA27A"
               value={pnr}
               onChange={e => setPnr(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -133,7 +134,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: YAMADA"
+              placeholder="例: KUMIKOYA"
               value={lastName}
               onChange={e => setLastName(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -142,11 +143,11 @@ export default function BookingChecker() {
 
           <div className="flex-1 min-w-[150px]">
             <label className="block text-xs font-semibold text-gray-700 mb-1">
-              便名
+              便名 <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
-              placeholder="例: NH-123"
+              placeholder="例: NH2047"
               value={flightNumber}
               onChange={e => setFlightNumber(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -195,10 +196,16 @@ export default function BookingChecker() {
                   <span className="text-gray-600">便名:</span>
                   <span className="font-semibold ml-2">{bookingInfo.flight.flightNumber}</span>
                 </div>
+                {bookingInfo.flight.route && (
+                  <div>
+                    <span className="text-gray-600">経路:</span>
+                    <span className="font-semibold ml-2">{bookingInfo.flight.route.join(' → ')}</span>
+                  </div>
+                )}
                 <div>
                   <span className="text-gray-600">出発:</span>
                   <span className="font-semibold ml-2">
-                    {bookingInfo.flight.departure.city} ({bookingInfo.flight.departure.airport})
+                    {bookingInfo.flight.departure.city}
                   </span>
                 </div>
                 <div>
@@ -213,6 +220,12 @@ export default function BookingChecker() {
                     {formatDate(bookingInfo.flight.departure.time)} {formatTime(bookingInfo.flight.departure.time)}
                   </span>
                 </div>
+                {bookingInfo.cancellationReason && (
+                  <div>
+                    <span className="text-gray-600">キャンセル理由:</span>
+                    <span className="font-semibold ml-2">{bookingInfo.cancellationReason}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -243,33 +256,22 @@ export default function BookingChecker() {
 
             <div className="bg-white p-4 rounded border border-green-200 md:col-span-2">
               <h4 className="font-semibold text-ana-blue mb-3">パスポート情報</h4>
-              <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-4 text-sm">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <span className="text-gray-600">パスポート番号:</span>
-                    <span className="font-mono block">{bookingInfo.passenger.passportNumber}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-600">有効期限:</span>
-                    <span className="font-semibold block">{formatDate(bookingInfo.passenger.passportExpiry)}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-600">国籍:</span>
-                    <span className="font-semibold block">{bookingInfo.passenger.nationality}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-600">生年月日:</span>
-                    <span className="font-semibold block">{formatDate(bookingInfo.passenger.dateOfBirth)}</span>
-                  </div>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-gray-600">パスポート番号:</span>
+                  <span className="font-mono block">{bookingInfo.passenger.passportNumber}</span>
                 </div>
-                <div className="flex items-center justify-center rounded border border-gray-200 bg-gray-50 p-3">
-                  <Image
-                    src="/kumiko.jpeg"
-                    alt="Seeded passenger"
-                    width={160}
-                    height={160}
-                    className="rounded object-cover"
-                  />
+                <div>
+                  <span className="text-gray-600">有効期限:</span>
+                  <span className="font-semibold block">{formatDate(bookingInfo.passenger.passportExpiry)}</span>
+                </div>
+                <div>
+                  <span className="text-gray-600">国籍:</span>
+                  <span className="font-semibold block">{bookingInfo.passenger.nationality}</span>
+                </div>
+                <div>
+                  <span className="text-gray-600">生年月日:</span>
+                  <span className="font-semibold block">{formatDate(bookingInfo.passenger.dateOfBirth)}</span>
                 </div>
               </div>
             </div>

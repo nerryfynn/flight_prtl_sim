@@ -5,37 +5,39 @@ import { eq, and } from 'drizzle-orm'
 
 const fallbackBookingResponse = {
   pnr: 'ANA27A',
-  status: 'POSTPONED',
+  status: 'CANCELLED',
+  cancellationReason: 'Operational disruption due to air traffic rerouting and crew scheduling',
   checkedIn: false,
   flight: {
     flightNumber: 'NH2047',
     airline: 'All Nippon Airways',
+    route: ['Tokyo', 'Germany', 'Vilnius'],
     departure: {
-      airport: 'NRT',
+      airport: 'Tokyo',
       city: 'Tokyo',
-      time: '2026-07-27T10:30:00+09:00',
+      time: '2026-07-30T10:00:00+09:00',
     },
     arrival: {
       airport: 'VNO',
       city: 'Vilnius',
-      time: '2026-07-27T16:00:00+03:00',
+      time: '2026-07-30T16:00:00+03:00',
     },
-    duration: 750,
+    duration: 840,
   },
   passenger: {
     firstName: 'Karen',
     lastName: 'Kumikoya',
     email: 'addresskumikoyakaren@gmail.com',
-    phone: '+81-90-0000-0000',
+    phone: '+81-90-1234-5678',
     dateOfBirth: '2000-01-01T00:00:00.000Z',
     nationality: 'Japan',
-    passportNumber: 'JPN0000001',
+    passportNumber: 'JPN123456789',
     passportExpiry: '2035-12-31T00:00:00.000Z',
-    address: 'N/A',
+    address: 'Tokyo, Japan',
   },
-  seat: '12A',
-  cabinClass: 'ECONOMY',
-  price: 19860000,
+  seat: '3A',
+  cabinClass: 'BUSINESS',
+  price: 45000000,
 }
 
 export async function GET(request: NextRequest) {

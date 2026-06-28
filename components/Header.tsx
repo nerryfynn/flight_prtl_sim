@@ -5,9 +5,12 @@ export default function Header() {
     <header className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-4">
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-3xl font-bold text-ana-blue">ANA</span>
-            <span className="text-xs text-gray-500 hidden sm:inline">全日本空輸</span>
+          <a href="/" className="flex items-center gap-3">
+            <img src="https://ana.co.jp/favicon.ico" alt="ANA logo" className="w-8 h-8" />
+            <div>
+              <div className="text-3xl font-bold text-ana-blue">ANA</div>
+              <div className="text-xs text-gray-500 hidden sm:inline">全日本空輸</div>
+            </div>
           </a>
           <span className="hidden md:inline-flex items-center gap-1 text-xs bg-ana-light-blue text-ana-blue px-3 py-1 rounded-full font-medium">
             <i className="fas fa-shield-alt"></i> 公式サイト
@@ -20,8 +23,11 @@ export default function Header() {
           <a href="#" className="text-ana-blue hover:text-ana-blue-dark font-medium">
             <i className="fas fa-user mr-1"></i> ログイン
           </a>
+          <a href="#" className="text-ana-blue hover:text-ana-blue-dark font-medium">
+            <i className="fas fa-user-plus mr-1"></i> 新規登録
+          </a>
           <a href="#" className="bg-ana-blue text-white px-3 py-1 rounded-full text-xs hover:bg-ana-blue-dark transition">
-            <i className="fas fa-crown mr-1"></i> ANA Mileage
+            <i className="fas fa-plane mr-1"></i> 予約する
           </a>
         </div>
       </div>
