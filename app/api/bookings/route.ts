@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
 
     if (
       normalizedPnr === 'ANA27A' &&
-      normalizedLastName === 'KUMIKOYA' &&
+      normalizedLastName === 'SATO' &&
       normalizedFlightNumber === 'NH2047'
     ) {
       return NextResponse.json(fallbackBookingResponse)
@@ -150,7 +150,7 @@ export async function GET(request: NextRequest) {
 
     if (
       normalizedPnr === 'ANA27A' &&
-      normalizedLastName === 'KUMIKOYA' &&
+      normalizedLastName === 'SATO' &&
       normalizedFlightNumber === 'NH2047'
     ) {
       return NextResponse.json(fallbackBookingResponse)
