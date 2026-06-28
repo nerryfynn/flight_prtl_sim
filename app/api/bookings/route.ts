@@ -54,8 +54,13 @@ export async function GET(request: NextRequest) {
 
     const normalizedPnr = pnr.trim().toUpperCase()
     const normalizedLastName = lastName.trim().toUpperCase()
+    const normalizedFlightNumber = (flightNumber || '').trim().toUpperCase()
 
-    if (normalizedPnr === 'ANA27A' && normalizedLastName === 'KUMIKOYA') {
+    if (
+      normalizedPnr === 'ANA27A' &&
+      normalizedLastName === 'KUMIKOYA' &&
+      normalizedFlightNumber === 'NH2047'
+    ) {
       return NextResponse.json(fallbackBookingResponse)
     }
 
@@ -85,8 +90,8 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // If flightNumber provided, verify it matches
-    if (flightNumber && flight.flightNumber !== flightNumber) {
+    // If flightNumber provided, verify it matches exactly
+    if (flightNumber && flight.flightNumber.toUpperCase() !== normalizedFlightNumber) {
       return NextResponse.json(
         { error: '便名が一致しません' },
         { status: 404 }
@@ -139,8 +144,13 @@ export async function GET(request: NextRequest) {
     const fallbackParams = request.nextUrl.searchParams
     const normalizedPnr = (fallbackParams.get('pnr') || '').trim().toUpperCase()
     const normalizedLastName = (fallbackParams.get('lastName') || '').trim().toUpperCase()
+    const normalizedFlightNumber = (fallbackParams.get('flightNumber') || '').trim().toUpperCase()
 
-    if (normalizedPnr === 'ANA27A' && normalizedLastName === 'KUMIKOYA') {
+    if (
+      normalizedPnr === 'ANA27A' &&
+      normalizedLastName === 'KUMIKOYA' &&
+      normalizedFlightNumber === 'NH2047'
+    ) {
       return NextResponse.json(fallbackBookingResponse)
     }
 
