@@ -3,12 +3,12 @@ Learning how to Create a World leading airline portal.
 
 ## Reservation lookup
 
-Use these details to preview the sample reservation:
+Use these details to check KUMIKOYE's reservation:
 
 - PNR: ANA27A
-- Last name: TANAKA
-- Ticket number: ANA-TKT-2026-27
-- Email: kenji.tanaka@example.com
+- Last name: KUMIKOYA
+- Ticket number: ANA-TKT-26-6-5893
+- Email: addresskumikoyakaren@gmail.com
 
 Flight details:
 - Airline: All Nippon Airways (ANA)
@@ -17,4 +17,5 @@ Flight details:
 - Arrival: Vilnius, 16:00
 - Class: Business
 - Route: Japan → Germany → Lithuania
-- Status: Cancelled
+- Status: Cancelled - Postponed to 27th July 2026
+

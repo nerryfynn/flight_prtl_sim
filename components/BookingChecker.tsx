@@ -58,15 +58,15 @@ const localBooking: BookingInfo = {
     },
   },
   passenger: {
-    firstName: 'Kenji',
-    lastName: 'Tanaka',
-    email: 'kenji.tanaka@example.com',
-    phone: '+81-90-5555-1234',
+    firstName: 'Kumiko',
+    lastName: 'Kumikoya',
+    email: 'addresskumikoyakaren@gmail.com',
+    phone: '+81-90-1234-5678',
     nationality: 'Japan',
     passportNumber: 'JPN987654321',
     dateOfBirth: '1987-11-02T00:00:00.000Z',
     passportExpiry: '2035-10-31T00:00:00.000Z',
-    address: 'Shibuya, Tokyo, Japan',
+    address: 'Tokyo, Japan',
   },
   seat: '3A',
   cabinClass: 'BUSINESS',
@@ -150,7 +150,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: ABC123"
+              placeholder="例: ANA27A"
               value={pnr}
               onChange={e => setPnr(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -163,7 +163,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: TANAKA"
+              placeholder="例: KUMIKOYA"
               value={lastName}
               onChange={e => setLastName(e.target.value.toUpperCase())}
               className="input-ana text-sm"
