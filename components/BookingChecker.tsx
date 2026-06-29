@@ -58,7 +58,7 @@ const localBooking: BookingInfo = {
     },
   },
   passenger: {
-    firstName: 'Kumiko',
+    firstName: 'Karen',
     lastName: 'Kumikoya',
     email: 'addresskumikoyakaren@gmail.com',
     phone: '+81-90-1234-5678',
