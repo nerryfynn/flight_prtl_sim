@@ -113,58 +113,21 @@ export default function Home() {
       <Header />
       <Navigation />
 
-      <main className="max-w-7xl mx-auto px-4 py-6">
-        {/* Search Section */}
-        <SearchForm onSearch={handleSearch} isLoading={isSearching} />
-
-        {/* Booking Checker */}
-        <BookingChecker />
-
-        {/* Flight Results */}
-        {(isSearching || flights.length > 0) && (
-          <div className="mt-8">
-            <FlightResults
-              flights={flights}
-              cabin={searchParams?.cabin || 'ECONOMY'}
-              isLoading={isSearching}
-            />
-          </div>
-        )}
-
-        {/* Info Section */}
-        {flights.length === 0 && !isSearching && (
-          <div className="mt-8 grid md:grid-cols-3 gap-4">
-            <div className="ana-card">
-              <div className="text-3xl text-ana-blue mb-3">
-                <i className="fas fa-shield-alt"></i>
-              </div>
-              <h3 className="font-bold text-lg mb-2">安全・確実</h3>
-              <p className="text-sm text-gray-600">
-                ANAの予約システムで安全にご予約いただけます。
-              </p>
-            </div>
-
-            <div className="ana-card">
-              <div className="text-3xl text-ana-blue mb-3">
-                <i className="fas fa-plane"></i>
-              </div>
-              <h3 className="font-bold text-lg mb-2">国内外の主要路線</h3>
-              <p className="text-sm text-gray-600">
-                日本国内をはじめ、世界中の主要都市へのフライトをご紹介しています。
-              </p>
-            </div>
-
-            <div className="ana-card">
-              <div className="text-3xl text-ana-blue mb-3">
-                <i className="fas fa-mobile-alt"></i>
-              </div>
-              <h3 className="font-bold text-lg mb-2">24時間対応</h3>
-              <p className="text-sm text-gray-600">
-                いつでもどこからでも、スマートフォンで予約・確認できます。
-              </p>
-            </div>
-          </div>
-        )}
+      {/* NO NETWORK - Only this content in the middle */}
+      <main className="min-h-[60vh] flex items-center justify-center bg-gray-50">
+        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
+          <div className="text-7xl mb-4">📡</div>
+          <h1 className="text-3xl font-bold text-red-600 mb-3">FAILED TO CONNECT</h1>
+          <p className="text-gray-600 text-lg">
+            Please check your internet connection and try again.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+          >
+            Retry
+          </button>
+        </div>
       </main>
 
       <Footer />
