@@ -150,7 +150,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: ANA27A"
+              placeholder="例: ANA12C"
               value={pnr}
               onChange={e => setPnr(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -163,7 +163,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: KUMIKOYA"
+              placeholder="例: SUZUKI"
               value={lastName}
               onChange={e => setLastName(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -176,7 +176,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: NH2047"
+              placeholder="例: NH1234"
               value={flightNumber}
               onChange={e => setFlightNumber(e.target.value.toUpperCase())}
               className="input-ana text-sm"
