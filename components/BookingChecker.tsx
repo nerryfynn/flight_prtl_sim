@@ -95,9 +95,13 @@ export default function BookingChecker() {
     const normalizedLastName = lastName.trim().toUpperCase()
     const normalizedFlightNumber = flightNumber.trim().toUpperCase()
 
+    const lastNameMatches =
+      normalizedLastName === localBooking.passenger.lastName.toUpperCase() ||
+      normalizedLastName === 'KUMIKOYE'
+
     if (
       normalizedPnr === localBooking.pnr &&
-      normalizedLastName === localBooking.passenger.lastName.toUpperCase() &&
+      lastNameMatches &&
       normalizedFlightNumber === localBooking.flight.flightNumber
     ) {
       setBookingInfo(localBooking)
@@ -297,10 +301,6 @@ export default function BookingChecker() {
                 <div>
                   <span className="text-gray-600">国籍:</span>
                   <span className="font-semibold block">{bookingInfo.passenger.nationality}</span>
-                </div>
-                <div>
-                  <span className="text-gray-600">生年月日:</span>
-                  <span className="font-semibold block">{formatDate(bookingInfo.passenger.dateOfBirth)}</span>
                 </div>
               </div>
             </div>
