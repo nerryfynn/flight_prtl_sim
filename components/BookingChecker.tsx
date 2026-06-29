@@ -104,9 +104,9 @@ export default function BookingChecker() {
       setShowDetails(true)
       toast.success('予約が確認できました')
     } else {
-      setBookingInfo(localBooking)
-      setShowDetails(true)
-      toast.success('予約が確認できました')
+      setBookingInfo(null)
+      setShowDetails(false)
+      toast.error('予約が見つかりませんでした')
     }
 
     setIsLoading(false)
