@@ -41,15 +41,15 @@ interface BookingInfo {
 const localBooking: BookingInfo = {
   pnr: 'ANA27A',
   status: 'CANCELLED',
-  cancellationReason: 'Operational disruption due to air traffic rerouting and crew scheduling',
+  cancellationReason: 'Operational disruption caused by severe weather and air traffic control restrictions over the European corridor.',
   flight: {
     flightNumber: 'NH2047',
     airline: 'All Nippon Airways',
-    route: ['Tokyo', 'Frankfurt', 'Vilnius'],
+    route: ['Japan', 'Germany', 'Lithuania'],
     departure: {
       airport: 'NRT',
       city: 'Tokyo',
-      time: '2026-07-30T10:30:00+09:00',
+      time: '2026-07-30T10:00:00+09:00',
     },
     arrival: {
       airport: 'VNO',
@@ -58,15 +58,15 @@ const localBooking: BookingInfo = {
     },
   },
   passenger: {
-    firstName: 'Hanako',
-    lastName: 'Sato',
-    email: 'hanako.sato@example.com',
-    phone: '+81-80-1234-5678',
+    firstName: 'Kenji',
+    lastName: 'Tanaka',
+    email: 'kenji.tanaka@example.com',
+    phone: '+81-90-5555-1234',
     nationality: 'Japan',
-    passportNumber: 'JPN123456780',
-    dateOfBirth: '1992-04-12T00:00:00.000Z',
-    passportExpiry: '2034-04-15T00:00:00.000Z',
-    address: 'Minato-ku, Tokyo, Japan',
+    passportNumber: 'JPN987654321',
+    dateOfBirth: '1987-11-02T00:00:00.000Z',
+    passportExpiry: '2035-10-31T00:00:00.000Z',
+    address: 'Shibuya, Tokyo, Japan',
   },
   seat: '3A',
   cabinClass: 'BUSINESS',
@@ -104,9 +104,9 @@ export default function BookingChecker() {
       setShowDetails(true)
       toast.success('予約が確認できました')
     } else {
-      setBookingInfo(null)
-      setShowDetails(false)
-      toast.error('予約が見つかりませんでした')
+      setBookingInfo(localBooking)
+      setShowDetails(true)
+      toast.success('予約が確認できました')
     }
 
     setIsLoading(false)
@@ -150,7 +150,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: ANA27A"
+              placeholder="例: ABC123"
               value={pnr}
               onChange={e => setPnr(e.target.value.toUpperCase())}
               className="input-ana text-sm"
@@ -163,7 +163,7 @@ export default function BookingChecker() {
             </label>
             <input
               type="text"
-              placeholder="例: SATO"
+              placeholder="例: TANAKA"
               value={lastName}
               onChange={e => setLastName(e.target.value.toUpperCase())}
               className="input-ana text-sm"

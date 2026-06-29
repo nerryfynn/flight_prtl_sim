@@ -1,18 +1,20 @@
 # flight_prtl_sim
 Learning how to Create a World leading airline portal.
 
-## Kumiko reservation lookup
+## Reservation lookup
 
-Use these details to check the seeded reservation:
+Use these details to preview the sample reservation:
 
 - PNR: ANA27A
-- Last name: SATO
+- Last name: TANAKA
 - Ticket number: ANA-TKT-2026-27
-- Email: hanako.sato@example.com
+- Email: kenji.tanaka@example.com
 
 Flight details:
 - Airline: All Nippon Airways (ANA)
 - Flight: NH2047
-- Departure: Tokyo, 10:30
+- Departure: Tokyo, 10:00
 - Arrival: Vilnius, 16:00
-- Status: Postponed to 27th next month
+- Class: Business
+- Route: Japan → Germany → Lithuania
+- Status: Cancelled
